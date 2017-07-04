@@ -17,7 +17,7 @@ class rWorkshopController extends Controller
      */
     public function index()
     {
-        return view('training.reqWorkshop');
+        return view('training.reqWorasfsfsfskshop');
     }
 
     /**
