@@ -17,7 +17,7 @@ class rWorkshopController extends Controller
      */
     public function index()
     {
-        return view('training.reqWorasfsfsfskshop');
+        return view('training.reqWorkshop');
     }
 
     /**
@@ -25,11 +25,6 @@ class rWorkshopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showAll()
-    {
-        $workshops = rWorkshop::all();
-        return view('workshopreq.index', compact('workshops'));
-    }
     public function create()
     {
         //
@@ -43,14 +38,8 @@ class rWorkshopController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'name' => 'required',
-            'email' => 'required|email',
-            'contact' => 'required',
-            'wType' => 'required',
-            ]);
         rWorkshop::create($request->all());
-        return redirect()->route('rWorkshop.index')->with('success','Request sent. We will get back at you as soon as possible!');
+        return redirect()->route('rWorkshop.index')->with('success', 'Request Sent!');
     }
 
     /**
