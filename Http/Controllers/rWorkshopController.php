@@ -38,6 +38,12 @@ class rWorkshopController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'contact' => 'required',
+            'wType' => 'required',
+            ]);
         rWorkshop::create($request->all());
         return redirect()->route('rWorkshop.index')->with('success', 'Request Sent!');
     }
