@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use app\Profile;
+
 class profileController extends Controller
 {
     /**
@@ -13,9 +15,10 @@ class profileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($user_id)
     {
-        return view('profile.index');
+        $profile = Profile::all();
+        return view ('home', compact('profile'));
     }
 
     /**

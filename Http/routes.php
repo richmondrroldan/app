@@ -25,11 +25,11 @@ Route::resource('events', 'eventsController');
 
 Route::resource('rWorkshop', 'rWorkshopController');
 
-Route::resource('profile' , 'profileController');
-
 Route::get('upEvents', 'eventsController@showAll');
 
 Route::get('findMentors', 'trainingController@findMentors');
+
+Route::get('mDet/{mentor}', 'mentorsController@mDet');
 
 Route::get ('mSpec/{skill}', 'mentorsController@mSpec');
 
@@ -37,11 +37,11 @@ Route::get('reqWorkshop', 'trainingController@reqWorkshop');
 
 Route::get('training', 'articleController@training');
 
+Route::get('detail', 'mentorsController@detail');
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('{article}', 'articleController@article');
-
-
+Route::get('/{article}', 'articleController@article');
 

@@ -23,20 +23,31 @@ class mentorsController extends Controller
         return view('mentors.index', compact('mentors'));
     }
 
+    public function detail($id)
+    {
+        $mentors = Mentor::find($id);
+        return view('mentors.detail', compact('mentors'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Mentor $mentors)
     {
         $skills = Skill::all();
-        return view('mentors.create', compact('skills'));
+        return view('mentors.create', compact('skills', 'mentors'));
     }
 
     public function mSpec($skills_title){
         $mentors= Mentor::where('skills_title', '=', $skills_title)->get();
         return view('mentors.mentors', compact('mentors'));
+    }
+    public function mDet($id)
+    {
+        $mentors = Mentor::find($id);
+        return view('mentors.detail', compact('mentors', 'skills'));
     }
 
     /**
@@ -65,7 +76,8 @@ class mentorsController extends Controller
      */
     public function show($id)
     {
-        //
+        $mentors = Mentor::find($id);
+        return view('mentors.detail', compact('mentors'));
     }
 
     /**
@@ -76,7 +88,6 @@ class mentorsController extends Controller
      */
     public function edit($id)
     {
-        $skills = Skill::all();
         $mentors = Mentor::find($id);
         return view('mentors.edit', compact('mentors','skills'));
     }
@@ -96,7 +107,7 @@ class mentorsController extends Controller
                 'skills_title',
             ]);
         Mentor::find($id)->update($request->all());
-        return redirect()->route('mentors.edit')
+        return redirect()->route('mentors.index')
             ->with('success','Mentor details successfully edited!');
     }
 
