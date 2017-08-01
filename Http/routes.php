@@ -41,6 +41,10 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/redirect/google','SocialAuthController@googleRedirect');
+
+Route::get('/callback/google','SocialAuthController@googleCallback');
+
 Route::get('{article}', 'articleController@article');
 
 
